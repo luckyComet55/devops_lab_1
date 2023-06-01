@@ -12,7 +12,7 @@
     "experimentalDecorators": true,
     "typeRoots": ["./node_modules/@types"],
     "sourceMap": true,
-    "types": ["node"]
+    "types": ["node", "jest"]
   },
   "include": ["."],
   "exclude": ["./node_modules"]
