@@ -2,19 +2,25 @@
   "name": "hse_devops_lab_1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "up": "cross-env NODE_ENV=dev nodemon"
+    "development": "cross-env NODE_ENV=dev nodemon",
+    "build": "tsc",
+    "start": "node ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "typescript": "^5.0.4"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.2.5",
     "cross-env": "^7.0.3",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1"
   }
 }
