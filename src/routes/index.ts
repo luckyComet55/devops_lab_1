@@ -8,7 +8,7 @@ import {
 export const notFound = (req: Request, res: Response) => {
   res.type('text/plain');
   res.status(404);
-  res.send('404 - ot Found');
+  res.send('404 - Not Found');
 }
 
 export const internalErr: ErrorRequestHandler = (err, req, res, next) => {
