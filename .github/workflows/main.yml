@@ -29,6 +29,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install zip
           zip -r report.zip coverage_res
+      - run: ls -la
       - name: Upload artifacts to google drive
         uses: adityak74/google-drive-upload-git-action@main
         with:
