@@ -15,8 +15,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
-      - run: echo "Before tests"
-      - run: ls -la
       - run: npm ci
       - run: npm run test
       - name: Download test coverage report
@@ -29,7 +27,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install zip
           zip -r report.zip coverage_res
-      - run: ls -la
       - name: Upload artifacts to google drive
         uses: adityak74/google-drive-upload-git-action@main
         with:
@@ -37,7 +34,6 @@ jobs:
           filename: "report.zip"
           folderId: ${{ secrets.G_FOLDER_ID }}
           overwrite: "true"
-          name: "coverage_report.zip"
 
   build:
     runs-on: ubuntu-latest
