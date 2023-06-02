@@ -19,6 +19,11 @@ jobs:
       - run: ls -la
       - run: npm ci
       - run: npm run test
+      - name: Download test coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage_report
+          path: coverage_res
 
   build:
     runs-on: ubuntu-latest
@@ -33,3 +38,8 @@ jobs:
       - run: ls -la
       - run: npm ci
       - run: npm run build
+      - name: Download build files
+        uses: actions/upload-artifacts@v3
+        with:
+          name: lab_compiled
+          path: dist
