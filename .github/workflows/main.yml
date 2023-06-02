@@ -24,6 +24,18 @@ jobs:
         with:
           name: coverage_report
           path: coverage_res
+      - name: Archive coverage report
+        run: |
+          sudo apt-get update
+          sudo apt-get install zip
+          zip -r report.zip coverage_res
+      - name: Upload artifacts to google drive
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.G_CREDENTIALS }}
+          filename: "report.zip"
+          folderId: ${{ secrets.G_FOLDER_ID }}
+          overwrite: "true"
 
   build:
     runs-on: ubuntu-latest
