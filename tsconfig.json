@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "lib": ["es5", "es6"],
+    "target": "ES6",
+    "strictNullChecks": true,
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": ["./node_modules/@types"],
+    "sourceMap": true,
+    "types": ["node", "jest"]
+  },
+  "include": ["."],
+  "exclude": ["./node_modules"]
+}
