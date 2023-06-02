@@ -37,6 +37,7 @@ jobs:
           filename: "report.zip"
           folderId: ${{ secrets.G_FOLDER_ID }}
           overwrite: "true"
+          name: "coverage_report.zip"
 
   build:
     runs-on: ubuntu-latest
