@@ -8,20 +8,20 @@ import {
 export const notFound = (req: Request, res: Response) => {
   res.type('text/plain');
   res.status(404);
-  return res.send('404 - Not Found');
+  res.send('404 - Not Found');
 }
 
 export const internalErr: ErrorRequestHandler = (err, req, res, next) => {
   console.error(err);
   res.type('text/plain');
   res.status(500);
-  return res.send('500 - Unresolved Exception');
+  res.send('500 - Unresolved Exception');
 }
 
 export const baseHandler = (req: Request, res: Response) => {
   res.type('application/json');
   res.status(200);
-  return res.send({
+  res.send({
     msg: 'Hello!',
   })
 }
