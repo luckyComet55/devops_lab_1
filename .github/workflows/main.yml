@@ -44,8 +44,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
-      - run: echo "After tests"
-      - run: ls -la
       - run: npm ci
       - run: npm run build
       - name: Download build files
@@ -53,3 +51,15 @@ jobs:
         with:
           name: lab_compiled
           path: dist
+      - name: Archive compiled files
+        run: |
+          sudo apt-get update
+          sudo apt-get install zip
+          zip -r compiled.zip dist
+      - name: Upload compiled files to google drive
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.G_CREDENTIALS }}
+          filename: "compiled.zip"
+          folderId: ${{ secrets.G_FOLDER_ID }}
+          overwrite: "true"
