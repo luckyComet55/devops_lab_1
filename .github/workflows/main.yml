@@ -104,4 +104,4 @@ jobs:
             cd app
             docker stop $(docker ps -a -q)
             docker pull ${{ secrets.DOCKER_NAME }}/express:latest
-            docker run -p ${{ secrets.DEPLOY_PORT }}:${{ secrets.DEPLOY_EXPOSE }} ${{ secrets.DOCKER_NAME }}/express:latest
+            docker run -p ${{ secrets.DEPLOY_PORT }}:${{ secrets.DEPLOY_EXPOSE }} -d ${{ secrets.DOCKER_NAME }}/express:latest
