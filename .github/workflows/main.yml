@@ -100,4 +100,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_PUB }}
           passphrase: ${{ secrets.DEPLOY_PASSPHRASE }}
-          script: docker pull ${{ secrets.DOCKER_NAME }}/express:latest && docker run -p ${{ secrets.DEPLOY_PORT }}:${{ secrets.DEPLOY_EXPOSE }} ${{ secrets.DOCKER_NAME }}/express:latest
+          script: |
+            cd app
+            docker pull ${{ secrets.DOCKER_NAME }}/express:latest
+            docker run -p ${{ secrets.DEPLOY_PORT }}:${{ secrets.DEPLOY_EXPOSE }} ${{ secrets.DOCKER_NAME }}/express:latest
