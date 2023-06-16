@@ -3,7 +3,7 @@ ARG PORT=3000
 ARG APP_DIR=app
 
 RUN mkdir -p ${APP_DIR}
-EXPOSE ${PORT}`
+EXPOSE ${PORT}
 WORKDIR ${APP_DIR}
 
 COPY package*.json tsconfig.json ./
