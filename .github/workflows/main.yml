@@ -86,4 +86,14 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_NAME }}/express:v1
+          tags: ${{ secrets.DOCKER_NAME }}/express:latest
+
+#  deploy:
+ #   runs-on: ubuntu-latest
+   # needs: docker
+  #  steps:
+    #  - uses: actions/checkout@v3
+     # - name: Create ssh key
+      #  run: |
+       #   mkdir -p ~/.ssh/
+        #  ssh-keygen
