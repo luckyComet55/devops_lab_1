@@ -86,14 +86,18 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_NAME }}/express:latest
+          tags: ${{ secrets.DOCKER_NAME }}/express::latest
 
-#  deploy:
- #   runs-on: ubuntu-latest
-   # needs: docker
-  #  steps:
-    #  - uses: actions/checkout@v3
-     # - name: Create ssh key
-      #  run: |
-       #   mkdir -p ~/.ssh/
-        #  ssh-keygen
+  deploy:
+    runs-on: ubuntu-latest
+    needs: docker
+    steps:
+      - uses: actions/checkout@v3
+      - name: Push to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_IP }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_PUB }}
+          passphrase: ${{ secrets.DEPLOY_PASSPHRASE }}
+          script: docker pull ${{ secrets.DOCKER_NAME }}/express:latest && docker run -p ${{ secrets.DEPLOY_PORT }}:${{ secrets.DEPLOY_EXPOSE }} ${{ secrets.DOCKER_NAME }}/express:latest
